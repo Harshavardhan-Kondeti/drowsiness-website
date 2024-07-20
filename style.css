@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+}
+
+.title {
+    display:flex;
+    text-align:center;
+    padding-left:350px;
+    background-color: rgb(164, 164, 215); 
+}
+
+.text-content{
+    display:flex;
+    flex-direction: column;
+    padding-left:60px;
+    padding-right:50px;
+}
+.heading1 {
+    text-align:left;
+    font-size:40px;
+    color:darkslategrey
+}
+
+.para1 {
+    font-size:20px;
+}
+
+.absimage {
+    height: 400px;
+
+}
+
+.introimage {
+    height: 600px;
+    width:800px;
+    align-self: center;
+}
+
+
+
+.trainimg {
+    height: 600px;
+    width:400px;
+    align-self: center;
+}
+
+.working-image {
+    height: 600px;
+    width:600px;
+    align-self: center;
+}
+
+.flowimg {
+    height:600px;
+    width:600px;
+    align-self: center;
+}
+
+.codepart {
+    text-align: center;
+    padding-top:50px;
+}
+
+.linkcode {
+    font-size:40px;
+}
+
+.result {
+    height:600px;
+    width:600px;
+    align-self: center;
+}
+
+.result1 {
+    height:300px;
+    width:1200px;
+    align-self: center;
+}
+
+.result2 {
+    height:300px;
+    width:300px;
+    align-self: center;
+}
+
+.qrscanner {
+    font-size:25px;
+} 
+
+.prevpage {
+    padding-top: 20px;
+    padding-bottom:10px;
+    font-size:20px;
+    
+}
+
+.paragraph {
+    padding-bottom:50px;
+    font-size:20px;
+}

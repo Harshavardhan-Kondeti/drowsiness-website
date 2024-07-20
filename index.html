@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="title">
+        <h1>Drowsiness Detection and Alert System Using Deep Learning</h1>
+    </div>
+    <div class="text-content">
+        <h1 class="heading1">Abstract</h1>
+        <p class="para1">
+            Driving requires full attention, and distractions like drowsiness greatly increase 
+            the risk of accidents. Each year, approximately 1.35 million people die in road 
+            traffic crashes, costing most countries 3% of their GDP. Our project aims to 
+            detect driver drowsiness or other risky activities using Deep Learning models to 
+            classify the driver's state from images.
+            This project introduces a Drowsy Driver Detection System that uses Deep 
+            Learning. It continuously monitors real-time data such as facial expressions, eye 
+            movements, and vehicle dynamics. This information is used to recognize 
+            patterns and extract features. The system is designed to fit seamlessly into 
+            different vehicles and provides alerts (visual, auditory, and haptic) when it 
+            detects signs of drowsiness. By focusing on simplicity and efficiency, the 
+            system is both accessible and cost-effective, making it suitable for widespread 
+            use in the automotive industry.
+        </p>
+        <img src="https://res.cloudinary.com/dpxpefedp/image/upload/v1720609001/intro_wro3ap.png" class="absimage">
+        <h1 class="heading1">Introduction</h1>
+        <p class="para1">
+            Drowsiness refers to a state of near sleep characterised by a strong desire to rest. 
+            It has two distinct aspects: the habitual state that precedes sleep and the chronic 
+            state, which occurs regardless of the daily rhythm. Drowsiness is particularly 
+            hazardous when performing tasks that require continuous focus, such as driving. 
+            When a driver feels excessively tired, they become drowsy, increasing the 
+            likelihood of road accidents. Developing technologies to detect or prevent driver 
+            drowsiness is a significant challenge in accident prevention systems.  
+            Given the danger that drowsiness poses on the road, it is crucial to develop 
+            methods to counter its effects. The goal of this project is to develop a simulation 
+            of a drowsiness detection system. The focus will be on designing a system that 
+            accurately monitors the state of the driver's eyes and mouth. By tracking these 
+            indicators, early signs of driver drowsiness can be detected, potentially 
+            preventing traffic accidents. Yawn detection is also a method used to assess 
+            driver fatigue, as tired individuals frequently yawn to increase oxygen intake 
+            before becoming sleepy. 
+            <br>
+            <br>
+
+            Fatigue and sleepiness detection involves analysing a sequence of facial images 
+            and observing the duration for which the eyes and mouth remain open or closed. 
+            One effective method for detecting eye closure is PERCLOS, which measures 
+            the percentage of time the eyes are closed over a specific period. Facial image 
+            analysis, a popular research area with applications such as facial recognition and 
+            human identification for security systems, is integral to this project. The project 
+            focuses on the localization of the eyes and mouth within facial images, applying 
+            image processing algorithms to determine their positions. 
+            Once the system locates the eyes, it can ascertain whether the eyes and mouth 
+            are open or closed, thereby detecting signs of fatigue and sleepiness. This 
+            approach aims to provide an effective solution for monitoring driver alertness 
+            and enhancing road safety.
+        </p>
+        <img src="https://res.cloudinary.com/dpxpefedp/image/upload/v1720609443/into2_mpylya.png" class="introimage">
+        <h1 class="heading1">Training Data Set Images </h1>
+        <img src="https://res.cloudinary.com/dpxpefedp/image/upload/v1720609183/training_images_c1ixwr.png" class="trainimg">
+        <h1 class="heading1">Working of Training Model</h1>
+        <p class="para1">
+            The system primarily focuses on detecting the driver's eye state (open or closed) 
+            to determine if they are drowsy. This solution employs the OpenCV library, 
+            which is renowned for its extensive computer vision functionalities, including 
+            face and eye detection using pre-trained Haar cascade classifiers. 
+            The program starts by importing the necessary library, cv2, which is the 
+            OpenCV library in Python. OpenCV is extensively used for real-time image 
+            processing and computer vision tasks. The Haar cascade classifiers used in this 
+            code are pre-trained models included in the OpenCV library, which detect 
+            objects in an image. These classifiers are based on the Haar feature-based 
+            cascade classifier algorithm, introduced by Paul Viola and Michael Jones. 
+            First, the code specifies the path to the Haar cascade classifier for detecting 
+            faces. The classifier is loaded using the cv2.CascadeClassifier method, which 
+            reads the XML file containing the pre-trained model. In this case, 
+            haarcascade_frontalface_default.xml is used to detect faces. 
+            Next, the code attempts to open a webcam for capturing live video. It tries to 
+            access the default webcam (cap = cv2.VideoCapture(1)), and if that fails, it 
+            attempts to access an alternative webcam (cap = cv2.VideoCapture(0)). If the 
+            webcam cannot be opened, an IO Error is raised, indicating that the webcam 
+            cannot be accessed. 
+            Once the webcam is successfully accessed, the code enters a continuous loop to 
+            read frames from the webcam in real-time. Each frame captured from the 
+            webcam is processed to detect faces and eyes. The eye detection is performed 
+            using another Haar cascade classifier, haarcascade_eye.xml, which is 
+            specifically trained to detect eyes. 
+            <br>
+            <br>
+            Within the loop, the captured frame is converted to a grayscale image using 
+            cv2.cvtColor. Grayscale conversion simplifies the image data, reducing 
+            computational complexity and enhancing the performance of the detection 
+            algorithms. The grayscale image is then processed to detect eyes using the 
+            detect Multiscale method of the eye cascade classifier. This method returns a list 
+            of rectangles where it believes it has found eyes in the image. Each rectangle is 
+            defined by its top-left corner coordinates (x, y) and its width and height (w, h).
+            For each detected eye, a Region of Interest (ROI) is created both in the 
+            grayscale image and the color image. This ROI focuses on the detected eye 
+            region for further processing. A rectangle is drawn around the detected eye in 
+            the color image to visualize the detection. 
+        </p>
+        <img src="https://res.cloudinary.com/dpxpefedp/image/upload/v1720609021/eyes_m7tpix.png" class="working-image"> 
+        <h1 class="heading1">Key Components of the Code:</h1>
+        <p class="para1">
+            ● Initialization:<br>
+             - Load the Haar cascade classifiers for face and eye detection.<br> -Attempt to access the webcam for video capture. <br><br>
+            ● Frame Capture and Processing: <br>- Continuously capture frames from the webcam.<br> - Convert frames to grayscale for simplified processing. <br>- Detect faces and eyes using the pre-trained classifiers.<br> -Draw rectangles around detected faces and eyes for 
+            visualization. <br><br>
+            ● Eye State Prediction: ,<br>
+            - Extract ROIs for detected eyes.<br> - Resize and normalize the eye ROIs.<br> - Predict the eye state using a pre-trained neural network model.<br> - Determine and display the eye state (open or closed). <br><br>
+            ● Visualization and User Interaction:<br>
+            - Overlay the eye state text on the video frame.<br> - Display the processed video frame in a window.<br> - Continuously update the window with new frames until the 
+            user presses 'q'.
+        </p>
+        <h1 class="heading1">Flowchart</h1>
+        <img src="https://res.cloudinary.com/dpxpefedp/image/upload/v1720609241/flowchart_ktfenv.gif" class="flowimg">
+        <h1 class="heading1">Results</h1>
+        <p class="para1">
+           <b>Input Image:</b><br>
+        </p> 
+        <img class="result" src="https://res.cloudinary.com/dpxpefedp/image/upload/v1720622787/input_wrbc7q.png">
+        <p class="para1"><b>Eyes Detection Image:</b><br></p>
+        <img class="result" src="https://res.cloudinary.com/dpxpefedp/image/upload/v1720622760/eyes_detection_novgbw.png">
+        <p class="para1"><b>Magnified eyes:</b><br></p>
+        <img class="result" src="https://res.cloudinary.com/dpxpefedp/image/upload/v1720622773/eyes_jhdc3y.png">
+        <p class="para1"><b>Final result:</b><br></p>
+        <img class="result1" src="https://res.cloudinary.com/dpxpefedp/image/upload/v1720622740/result_qwuboi.png">
+
+        <h1 class="heading1">Conclusion</h1>
+        <p class="paragraph">
+            The Drowsiness Detection and Alert System using Deep Learning is a 
+            significant step forward in improving road safety. By employing advanced 
+            machine learning and computer vision techniques, the system effectively 
+            monitors the driver’s eyes and facial expressions in real-time to detect signs of 
+            drowsiness. This project involves thorough data preprocessing, including 
+            collection, cleaning, face and eye detection, resizing, normalisation, and 
+            augmentation, ensuring the model works efficiently and accurately across 
+            various scenarios. <br> <br>
+            The system’s non-intrusive design allows seamless integration into different 
+            vehicles, making it practical and cost-effective for widespread use. It provides 
+            multimodal alerts—visual, auditory, and haptic—prompting drivers when 
+            drowsiness is detected, thereby helping to prevent accidents caused by fatigue. <br><br>
+            Overall, this system not only aims to reduce road accidents but also encourages 
+            responsible and alert driving. It demonstrates the potential of deep learning and 
+            computer vision in creating effective real-world safety solutions. Future 
+            enhancements could include additional features like head pose estimation and 
+            broader facial expression analysis to further improve its accuracy and reliability. 
+                      
+        </p>
+    </div>
+</body>
+</html>
